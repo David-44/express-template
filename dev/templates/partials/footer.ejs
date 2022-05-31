@@ -1,4 +1,12 @@
 
+<%
+  var menus = [
+    ["Welcome", "Home"],
+    ["About Us", About Us"],
+    ["Contact Us", "Contact"]
+  ];
+%>
+
 <footer>
 
   <nav class="visually-hidden">
@@ -10,7 +18,7 @@
             <span class="nav-menus-text__footer"><%= menu[2] %></span>
           </li>
         <%_ } else { _%>
-          <li class="nav-menus-item__footer"><a href="<%= menu[1] %>"><%= menu[2] %></a></li>
+          <li class="nav-menus-item__footer"><a href="<%= route %>"><%= menu[1] %></a></li>
         <%_ } _%>
       <%_ }); _%>
     </ul>

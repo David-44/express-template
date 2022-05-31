@@ -1,19 +1,31 @@
 
-<% var mainContent = `<main id="main" class="ls-main-container">
-  HERE GOES THE MAIN CONTENT OF THE FILE
-</main>`
-%>
-
-
-
 <%
   var pageParams = {
-    pageTitle: "TITLE",
-    route: "",
-    mainContent
+    pageTitle: "INSERT TITLE",
+    route: "INSERT ROUTE"
   };
 %>
 
+<%- include("../partials/head.ejs", pageParams); %>
 
 
-<%- include('../partials/layout.ejs', pageParams); %>
+<body>
+<%- include('../partials/sprite-map.ejs'); %>
+<%- include('../partials/header.ejs', pageParams); %>
+
+
+
+
+
+<main id="main" class="ls-main-container">
+  HERE GOES THE MAIN CONTENT OF THE FILE
+</main>`
+
+
+
+
+
+<%- include('../partials/footer.ejs', pageParams); %>
+</body>
+
+</html>
