@@ -16,12 +16,12 @@ All the development is made in /dev and files are copied to dist using gulp
 
 ## 2) INITIALISING:
 
-1. Add a title, author and description to both package.json files (dev and dist).
+1. Add a title, author and description to package.json
 2. `$ npm run first`
 - It deletes the current .git repo and .gitignore
 - It creates a git repo for the dev environment and for the live one.
 - It installs necessary node modules at the root
-3. Add .env to both dev/.gitignore and dist/.gitignore before any modification to .env is done
+3. Add .env to both dev/.gitignore and dist/.gitignore before any modification to .env
 
 
 
