@@ -1,9 +1,9 @@
 
 <%
   var menus = [
-    ["Welcome", "Home"],
-    ["About Us", About Us"],
-    ["Contact Us", "Contact"]
+    ["Welcome", "Home", "index"],
+    ["About Us", "About Us", "about"],
+    ["Contact Us", "Contact", "contact"]
   ];
 %>
 
@@ -15,10 +15,10 @@
         <%_ if (menu[0] == pageTitle) { _%>
           <li class="nav-menus-item__footer">
             <span class="visually-hidden">Current: </span>
-            <span class="nav-menus-text__footer"><%= menu[2] %></span>
+            <span class="nav-menus-text__footer"><%= menu[1] %></span>
           </li>
         <%_ } else { _%>
-          <li class="nav-menus-item__footer"><a href="<%= route %>"><%= menu[1] %></a></li>
+          <li class="nav-menus-item__footer"><a href="<%= menu[2] %>"><%= menu[1] %></a></li>
         <%_ } _%>
       <%_ }); _%>
     </ul>

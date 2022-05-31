@@ -9,7 +9,7 @@
   "scripts": {
     "watch": "node-sass -o ./ ./dev/scss/main.scss -w",
     "prod": "node ./dist/app.js",
-    "dev:" "node ./dev/app.js",
+    "dev": "node ./dev/app.js",
     "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init"
   },
   "author": "NAME IT",
