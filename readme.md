@@ -96,4 +96,4 @@ At the moment, the models and controllers are empty, might be filled at a later 
 
 
 ### Other files
-- procfile, used only by heroku.
+- procfile, used only by heroku and only in dist folder
