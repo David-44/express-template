@@ -1,0 +1,163 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+
+// #EVENT-WRAPPER
+// #CENTERING
+  // absolutely
+  // with flexbox
+// #CLEARFIX
+// #BACKGROUND-FILTER (applies a transparent filter to a background image)
+// #BLURRY-TEXT-SHADOWS (cool effect)
+// #VERTICAL RHYTHM
+// #GRID
+
+
+
+
+/// #EVENT-WRAPPER
+/// Use instead of pseudo classes
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+
+
+
+
+/// #CENTERING
+// absolutely
+@mixin centering($top: null) {
+  position: absolute;
+  top: $top;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+// With flexbox
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+// #CLEARFIX
+// @author Nicolas Gallagher
+// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+
+
+
+
+/// #BACKGROUND-FILTER
+/// Applies an opaque rgba filter to a background image
+/// @param {String} $image-url - path to the url
+/// @param {color} $color - a color in any accepted format
+/// @param {num} $opacity - a number between 0 and 1
+@mixin filter-image($image-url, $color, $opacity: 1) {
+  $bg-color: $color;
+  $url: url(#{$image-url});
+  @if $opacity != 1 {
+    $bg-color: change-color($color, $alpha: $opacity);
+  }
+  background-image: $url;
+  background-image: (linear-gradient($bg-color, $bg-color), $url);
+}
+
+
+
+
+
+/// #BLURRY-TEXT-SHADOWS
+/// Applies a small blur to text (needs to be improved with more distances)
+/// @param {color} $text-color - any kind of color accepted in CSS
+/// @param {String} $blur-radius - a length, better in pixels
+/// @param {color} $shadow-color - any kind of color accepted in CSS
+@mixin cool-shadow($text-color, $blur-radius, $shadow-color) {
+  color: $text-color;
+  text-shadow: 0 0 $blur-radius $shadow-color,
+              1px 1px $blur-radius $shadow-color,
+              2px 2px $blur-radius $shadow-color,
+              -1px -1px $blur-radius $shadow-color,
+              -2px -2px $blur-radius $shadow-color;
+}
+
+
+
+
+
+/// #VERTICAL-RHYTHM
+/// Uses function #RHYTHM-GENERATOR
+/// @param {length}: Base line-height, any unit works
+@mixin set-vertical-rhythm($vert-rhythm: $large-mul * 1rem ) {
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    background-image: repeating-linear-gradient(set-repeating(to bottom, $vert-rhythm));
+  }
+}
+
+
+
+
+
+/// #GRID
+/// Uses function #RHYTHM-GENERATOR
+/// @param {number}: The number of columns
+/// @param {number}: The proportion of the gutter compared to the column, number between 0 and 1
+@mixin set-grid($column-numbers: $cols__body, $gutter-width: null) {
+
+  $column-width: 100% / $column-numbers;
+
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: inherit;
+    max-width: inherit;
+    border: 1px solid black;
+    height: 100vh;
+    z-index: 10000;
+    background-image: repeating-linear-gradient(set-repeating(to right, $column-width, $gutter-width));
+  }
+}

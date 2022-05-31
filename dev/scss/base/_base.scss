@@ -1,0 +1,170 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+// contains base styles in this order:
+// - html
+// - margins removal
+// - list style reset
+// - Main should be relatively positioned (for positioning children)
+// - images styles
+// - form styles (fieldset + all form elements + button focus)
+// - Links basic styles
+// - disabling animations for people who don't want them
+// - Default colour when selecting text
+
+
+
+
+
+/* html basic styles */
+// What goes on html:
+// - background-colour that have to span the whole width of the viewport
+// - anything that needs to be inherited everywhere (box-sizing, overflow, background-repeat...)
+// - overflow-x to avoid the ugly horizontal bar
+// Note: All typography styles on the html element are in the _typography.scss partial
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+
+  background-color: $colour__background--light;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  background-repeat: inherit;
+}
+
+
+
+
+
+/* Resets margins and paddings for all browsers */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li,  figure, figcaption, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+/* Remove styling from lists with a class (the class means they will be styled) */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+
+
+
+
+/* Used for positionning some of the sections */
+main {
+  position: relative;
+}
+
+
+
+
+
+/* Make images easier to work with */
+/* Transitions smoothly when resizing the screen */
+picture,
+img {
+  transition: width $trns-duration;
+  max-width: 100%;
+  display: block;
+}
+
+
+
+
+
+/* Resets fieldsets */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+/* Inherit font styles for form elements */
+button, input, select, textarea {
+	font-family: inherit;
+	font-size: 100%;
+  text-transform: none;
+}
+
+
+
+
+
+/* Reset appearance before working with form elements */
+input, select {
+	webkit-appearance: none;
+	appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+
+
+
+
+/* Prevents google chrome to display an ugly border when a button is clicked */
+// Note: outline should be set for accessibility
+*:focus {
+  outline: none;
+}
+
+
+
+
+
+/* Basic styles for links */
+// Since there is a transition, link colour doesn't change on hover
+// Opacity changes instead of colour since it is a cheap property
+a {
+  color: $color__link--dark;
+  text-decoration: underline;
+
+  transition-property: opacity;
+  transition-duration: $trns-duration;
+  transition-delay: $trns-delay;
+
+  @include on-event {
+    opacity: 0.6;
+  }
+}
+
+
+
+
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+/* Adds a default colour when selecting text */
+::selection{
+  background: $color__selected;
+  color: inherit;
+}

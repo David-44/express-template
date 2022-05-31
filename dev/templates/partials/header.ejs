@@ -1,0 +1,21 @@
+
+<header aria-label="site header">
+
+  <h1 class="page-title  ls-header__title">TITLE</h1>
+  <a href="#main" class="visually-hidden">Skip to main content</a>
+
+  <nav>
+    <ul id="nav-menus" class="nav-menus  is-hidden">
+      <%_ menus.forEach( menu => { _%>
+        <%_ if (menu[0] == pageTitle) { _%>
+          <li class="nav-menus--item">
+            <span class="visually-hidden">Current: </span>
+            <span class="nav-menus--item__current"><%= menu[2] %></span>
+          </li>
+        <%_ } else { _%>
+          <li class="nav-menus--item"><a class="interactive-item" href="<%= menu[1] %>"><%= menu[2] %></a></li>
+        <%_ } _%>
+      <%_ }); _%>
+    </ul>
+  </nav>
+</header>

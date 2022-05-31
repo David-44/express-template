@@ -1,0 +1,19 @@
+
+<% var mainContent = `<main id="main" class="ls-main-container">
+  HERE GOES THE MAIN CONTENT OF THE FILE
+</main>`
+%>
+
+
+
+<%
+  var pageParams = {
+    pageTitle: "TITLE",
+    route: "",
+    mainContent
+  };
+%>
+
+
+
+<%- include('../partials/layout.ejs', pageParams); %>

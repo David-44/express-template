@@ -1,0 +1,138 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+// TABLE OF CONTENTS
+// -----------------------------------------------------------------------------
+
+
+// #COLOR-LIGHTEN
+// #COLOR-DARKEN
+// #URL-WRAPPER
+  // image wrapper
+  // font wrapper
+// #POWER-MATH
+// #STRING-CHARACTER-REPLACE
+// #RHYTHM-GENERATOR
+
+
+
+
+
+/// #COLOR-LIGHTEN
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+
+/// #COLOR-DARKEN
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+
+
+
+
+// #URL-WRAPPER
+/// Native `url(..)` function wrapper
+/// @param {String} $base - base URL for the asset
+/// @param {String} $type - asset type folder (e.g. `fonts/`)
+/// @param {String} $path - asset path
+/// @return {Url}
+@function asset($base, $type, $path) {
+  @return url($base + $type + $path);
+}
+
+
+/// Returns URL to an image based on its path
+/// @param {String} $path - image path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function image($path, $base: $base-url) {
+  @return asset($base, 'images/', $path);
+}
+
+
+/// Returns URL to a font based on its path
+/// @param {String} $path - font path
+/// @param {String} $base [$base-url] - base URL
+/// @return {Url}
+/// @require $base-url
+@function font($path, $base: $base-url) {
+  @return asset($base, 'fonts/', $path);
+}
+
+
+
+
+
+/// #POWER-MATH
+/// Stolen from CSS-tricks https://css-tricks.com/snippets/sass/power-function/
+/// @param {number}: the number to be multiplied
+/// @param {number}: the exponent
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  }
+
+  @return $value;
+}
+
+
+
+
+
+// #STRING-CHARACTER-REPLACE
+/// @param {String} x 3
+// Replaces all instances of $search with $replace
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @return if($index,
+  str-slice($string, 1, $index - 1) + $replace +
+  str-replace(str-slice($string, $index +
+  str-length($search)), $search, $replace),
+  $string);
+}
+
+
+
+
+
+/// #RHYTHM-GENERATOR
+/// Used by mixins #GRID and #VERTICAL-RHYTHM
+/// This generates one row or colum that should be repeated in a linear gradient
+/// @param {word}: The first parameter is a direction as used in linear gradient (to bottom...)
+/// @param {length}: Width of the column / row
+/// @param {number}: Optional, between 0 and 1, the proportion of the gutter
+
+
+@function set-repeating($direction, $distance, $offset: null) {
+  @if (unit($distance) != 'px') {
+    @if ($offset) {
+      @return $direction, hsla(0, 0, 50%, 0.5), hsla(0, 0, 50%, 0.5) $distance * $offset, transparent $distance * $offset, transparent $distance;
+    } @else {
+      @return $direction, transparent, transparent calc(#{$distance} - 1px),
+        black calc(#{$distance} - 1px), black $distance;
+    }
+  }
+  @return $direction, transparent,
+    transparent $distance - 1px, black $distance - 1px, black $distance;
+}

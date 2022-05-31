@@ -1,0 +1,190 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+
+
+
+/// BODY'S DIMENSIONS
+/// -----------------
+
+/// @type Length : absolute max widths of the body
+/// @type Length : relative width of body
+/// @type Number : number of columns of the grid
+
+$max-width__body: 1180px !default;
+$width__body: 80vw !default;
+$cols__body: 10 !default;
+
+
+
+// All width in two columns layout are calculated as follows:
+// ((grid-columns / 2 ) -1) / grid-columns
+// The idea is that 2 articles + 2 columns gutter should take 100% of free space
+// USAGE: multiply $col-width by either 100% or 100vw
+// $col-width: ($cols__body / 2 - 1) / $cols__body;
+$col-width: round($cols__body / 2 - 1) / $cols__body !default;
+
+
+
+
+
+/// MULTIPLICATORS
+/// ---------------
+
+/// Design proportion: 60%
+// All numbers are rounded to 2 digits after the decimal
+
+/// @type Number
+$small-mul: 0.6;
+$x-small-mul: round(pow($small-mul, 2) * 100) / 100;
+$xx-small-mul: round(pow($small-mul, 3) * 100) / 100;
+$xxx-small-mul: round(pow($small-mul, 4) * 100) / 100;
+
+
+/// @type Number
+$large-mul: round((1 / $small-mul) * 100) / 100;
+$larger-mul: round(pow($large-mul, 2) * 100) / 100;
+$x-large-mul: round(pow($large-mul, 3) * 100) / 100;
+$xx-large-mul: round(pow($large-mul, 4) * 100) / 100;
+$xxx-large-mul: round(pow($large-mul, 5) * 100) / 100;
+$xxxx-large-mul: round(pow($large-mul, 6) * 100) / 100;
+
+
+
+
+
+// FONTS
+// ------
+
+
+// Font Stacks
+// Stacks list: https://gist.github.com/jacrook/9009655
+// Stacks list 2: https://www.cssfontstack.com/
+
+
+/// @type List
+$font-family__main-title : serif !default;
+$font-family__primary    : sans-serif !default;
+$font-family__header     : serif !default;
+
+
+// Sizes
+// Note: line height and is set in _typography.scss and should be one of:
+// - $large-mul
+// - 2
+/// @type Length
+$font-size--base: 16px !default;
+$font-size--medium: 18x !default;
+$font-size--large: 20px !default;
+
+
+
+
+
+// COLOURS
+// --------
+
+
+// PALETTE :
+// Use descriptive names, bright-orange, dark-blue...
+// Use hsl notation
+
+// HERE DESCRIBE THE COLOUR SCHEME, HUES, ETC...
+
+$colour-palette: (
+
+  // White, black and grey
+  'bright-white': white,
+  'warm-white':   white,
+  'warm-black':   black,
+  'dark-black':   black,
+  'light-grey':   grey,
+  'dark-grey':    grey,
+
+
+  // Flashy colours
+  'bright-orange': orange
+) !default;
+
+
+
+
+
+// USAGE
+// Maps to the colour palette
+
+// Rough guide
+// - Main colour to use at important places
+// - 1 or 2 accent colours
+// - Background colour
+// - Typography colour
+// - Some tints or shades that can be used for filters
+
+
+// Background colours
+$colour__background--light: map-get($colour-palette, 'bright-white') !default;
+$colour__background--dark: map-get($colour-palette, 'warm-black') !default;
+
+$colour__background-filter: change-color(map-get($colour-palette, 'bright-orange'), $alpha: 0.2) !default;
+
+
+// Text colour
+$color__title: map-get($colour-palette, 'bright-orange') !default;
+$color__section-title: map-get($colour-palette, 'warm-black') !default;
+
+$color__text--dark: map-get($colour-palette, 'dark-black') !default;
+$color__text--bright: map-get($colour-palette, 'warm-white') !default;
+
+$color__link--light: map-get($colour-palette, 'dark-grey') !default;
+$color__link--dark: map-get($colour-palette, 'light-grey') !default;
+
+
+// Image filter colours
+$colour__filter: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.6) !default;
+
+
+// Selection colour used for text selection
+$color__selected: map-get($colour-palette, 'bright-orange') !default;
+
+
+// Borders and shadows colours
+$color__border: map-get($colour-palette, 'bright-white') !default;
+$color__shadow--strong: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.7) !default;
+$color__shadow--light: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.3) !default;
+
+
+
+
+
+/// BREAKPOINTS MAP
+/// ----------------
+
+/// Use with the breakpoint plug-in
+/// Media queries need to manage dimensions, orientation and density
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+$breakpoints: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+  'huge': 1400px
+) !default;
+
+
+
+
+
+/// RANDOM STUFF
+/// -------------
+
+// Border radius
+$br--default    : .5em;
+$br--round      : 50%;
+
+
+
+// Transitions
+$trns-duration  : .3s;
+$trns-delay     : .05s;

@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// This file contains styles related to the container and grid of the site/application.
+// -----------------------------------------------------------------------------
+
+
+/* Setting up the main content container: body element */
+// {1} The container should be at least as high as the viewport
+// {2} Make the container full-width with a maximum width
+// {3} Center it in the viewport
+// {4} Avoids jittery scrolling
+// {5} Sets up a vertical stack
+// {6} Grid + vertical rhythm from mixins #GRID and #VERTICAL-RHYTHM. Uncomment to use
+//     Don't use both at the same time
+
+body {
+  min-height: 100vh;            // {1}
+  width: $width__body;          // {2}
+  max-width: $max-width__body;  // {2}
+  margin-left: auto;            // {3}
+  margin-right: auto;           // {3}
+
+  scroll-behavior: smooth;      // {4}
+
+  display: flex;                // {5}
+  flex-direction: column;       // {5}
+  align-items: center;          // {5}
+
+
+  // @include set-vertical-rhythm(); // {6}
+  // @include set-grid();            // {6}
+}

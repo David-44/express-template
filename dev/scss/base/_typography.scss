@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+// This file contains all typography styles
+// -----------------------------------------------------------------------------
+
+
+/* Body copy typography */
+// {1} All basic typography styles
+// {2} All body copy styles
+// Note: All font sizes should use rem and be related to the html element
+
+html {
+  font-kerning: normal;                                 // {1}
+  font-variant-ligatures: common-ligatures contextual;  // {1}
+
+  font-family: $font-family__primary;                   // {2}
+  font-size: $font-size--base;                          // {2}
+  line-height: $large-mul;                              // {2}
+  color: $color__text--dark;                            // {2}
+
+}
