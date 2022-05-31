@@ -21,6 +21,7 @@ All the development is made in /dev and files are copied to dist using gulp
 - It deletes the current .git repo and .gitignore
 - It creates a git repo for the dev environment and for the live one.
 - It installs necessary node modules at the root
+3. Add .env to both dev/.gitignore and dist/.gitignore before any modification to .env is done
 
 
 
