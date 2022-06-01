@@ -194,6 +194,7 @@ function copyPackage(cb) {
 function watchDev(cb) {
   watch(devPath + 'templates/html/*', generateHTML);
   watch(devPath + 'templates/ejs/*', generateTemplate);
+  watch(devPath + 'templates/partials/*', series(generateTemplate, generateHTML));
   watch(devPath + 'scss/**/*', generateCSS);
   watch(devPath + 'scripts/*', concatScript);
   watch('./package.json', copyPackage);
