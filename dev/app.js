@@ -33,7 +33,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 
-// Setting up cache for get requests
+// Setting up cache for get requests but only for production
 let setCache = function (req, res, next) {
   const period = 60 * 60 * 24 * 365;
 
@@ -44,7 +44,9 @@ let setCache = function (req, res, next) {
   }
   next();
 }
-app.use(setCache);
+if (process.env.NODE_ENV == "production"){
+  app.use(setCache);
+}
 
 
 
