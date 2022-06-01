@@ -3,4 +3,21 @@
 // -----------------------------------------------------------------------------
 
 
-// Add from CSS helpers library
+/*
+ * HIDING FROM SCREEN BUT NOT SCREEN READERS: .visually-hidden
+ * Hides element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+
+.visually-hidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
