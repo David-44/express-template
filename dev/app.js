@@ -10,7 +10,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const mongoSanitize = require('express-mongo-sanitize');
 
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/.env'});
 
 const models = require('./models/models');
 const router = require('./routers/routes');
