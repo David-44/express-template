@@ -12,7 +12,8 @@
   <h1 class="page-title  l-header__title">TITLE</h1>
   <a href="#main" class="visually-hidden">Skip to main content</a>
 
-  <nav>
+  <nav aria-labelledby="menu" class="l-header__nav" id="nav">
+    <h2 id="menu" class="visually-hidden">Main Menu</h2>
     <ul id="nav-menus" class="nav-menus  is-hidden">
       <%_ menus.forEach( menu => { _%>
         <%_ if (menu[0] == pageTitle) { _%>
