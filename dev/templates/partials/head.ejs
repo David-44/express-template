@@ -21,5 +21,19 @@
 
 	<link href="./main.css" rel="stylesheet">
 
+  <script>
+  /* FEATURE DETECTION THAT NEEDS TO BE DONE BEFORE WINDOW LOAD */
+
+  // Webp detection (always useful)
+    var webp = new Image();
+    webp.onerror = function(){
+      document.documentElement.classList.add("no-webp");
+    };
+    webp.onload = function(){
+      document.documentElement.classList.add("webp");
+    };
+    webp.src = 'data:image/webp;base64,UklGRjIAAABXRUJQVlA4ICYAAACyAgCdASoBAAEALmk0mk0iIiIiIgBoSygABc6zbAAA/v56QAAAAA==';
+  </script>
+
   <script src="./scripts.js" defer></script>
 </head>
