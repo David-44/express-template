@@ -24,6 +24,7 @@
 
 
 /// #COLOR-LIGHTEN
+/// Used to set colour variables in _variables file
 /// @access public
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color
@@ -34,6 +35,7 @@
 
 
 /// #COLOR-DARKEN
+/// Used to set colour variables in _variables file
 /// @access public
 /// @param {Color} $color - color to shade
 /// @param {Number} $percentage - percentage of `$color` in returned color

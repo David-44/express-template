@@ -87,26 +87,33 @@ $font-size--large: 20px !default;
 // --------
 
 
+
 // PALETTE :
-// Use descriptive names, bright-orange, dark-blue...
+// Works with two main colours, one cold and one warm, opposite in the colour wheel
+// Note: We didn't use a map because the colour functions (lighten, darken...)
+// dn't work inside a map with key value pairs
 // Use hsl notation
 
 // HERE DESCRIBE THE COLOUR SCHEME, HUES, ETC...
 
-$colour-palette: (
-
-  // White, black and grey
-  'bright-white': white,
-  'warm-white':   white,
-  'warm-black':   black,
-  'dark-black':   black,
-  'light-grey':   grey,
-  'dark-grey':    grey,
 
 
-  // Flashy colours
-  'bright-orange': orange
-) !default;
+// Flashy colours
+$c-cold: hsl(206, 62, 73) !default; // Turquoise
+$c-warm: hsl(25, 100, 57) !default; // Apricot
+
+
+
+// White, black and grey
+$c-cold-white:   tint($c-cold, 90%)  !default;
+$c-warm-white:   tint($c-warm, 90%)  !default;
+
+$c-cold-black:   shade($c-cold, 90%) !default;
+$c-warm-black:   shade($c-warm, 90%) !default;
+
+$c-grey:   desaturate($c-cold, 100%) !default;
+$c-light-grey:   tint($c-grey, 90%)  !default;
+$c-dark-grey:    shade($c-grey, 90%) !default;
 
 
 
@@ -124,35 +131,37 @@ $colour-palette: (
 
 
 // Background colours
-$colour__background--light: map-get($colour-palette, 'bright-white') !default;
-$colour__background--dark: map-get($colour-palette, 'warm-black') !default;
+$colour__background--light: $c-cold-white !default;
+$colour__background--dark: $c-warm-black !default;
+$colour__background--nav: change-color($c-cold, $alpha: 0.4) !default;
+$colour__background--menu: change-color($c-cold, $alpha: 0.7) !default;
 
-$colour__background-filter: change-color(map-get($colour-palette, 'bright-orange'), $alpha: 0.2) !default;
 
 
 // Text colour
-$color__title: map-get($colour-palette, 'bright-orange') !default;
-$color__section-title: map-get($colour-palette, 'warm-black') !default;
+$color__title: $c-cold !default;
+$color__section-title: $c-warm-black !default;
 
-$color__text--dark: map-get($colour-palette, 'dark-black') !default;
-$color__text--bright: map-get($colour-palette, 'warm-white') !default;
+$color__text--dark: $c-cold-black !default;
+$color__text--bright: $c-warm-white !default;
 
-$color__link--light: map-get($colour-palette, 'dark-grey') !default;
-$color__link--dark: map-get($colour-palette, 'light-grey') !default;
+$color__link--light: $c-dark-grey !default;
+$color__link--dark: $c-light-grey !default;
 
 
 // Image filter colours
-$colour__filter: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.6) !default;
+$colour__filter: change-color($c-cold-black, $alpha: 0.6) !default;
 
 
 // Selection colour used for text selection
-$color__selected: map-get($colour-palette, 'bright-orange') !default;
+$color__selected: $c-warm !default;
 
 
 // Borders and shadows colours
-$color__border: map-get($colour-palette, 'bright-white') !default;
-$color__shadow--strong: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.7) !default;
-$color__shadow--light: change-color(map-get($colour-palette, 'dark-black'), $alpha: 0.3) !default;
+$color__border: $c-cold-white !default;
+$color__shadow--strong: change-color($c-cold-black, $alpha: 0.7) !default;
+$color__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
+
 
 
 
