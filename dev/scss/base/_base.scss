@@ -133,7 +133,7 @@ input, select {
 // Since there is a transition, link colour doesn't change on hover
 // Opacity changes instead of colour since it is a cheap property
 a {
-  color: $color__link--dark;
+  color: $colour__link--dark;
   text-decoration: underline;
 
   transition-property: opacity;
@@ -165,6 +165,6 @@ a {
 
 /* Adds a default colour when selecting text */
 ::selection{
-  background: $color__selected;
+  background: $colour__selected;
   color: inherit;
 }

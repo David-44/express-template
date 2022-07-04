@@ -12,10 +12,13 @@
 /// @type Length : absolute max widths of the body
 /// @type Length : relative width of body
 /// @type Number : number of columns of the grid
+/// @type Length : the width of a text paragraph, should be no more than 80ch for readability
 
 $max-width__body: 1180px !default;
 $width__body: 80vw !default;
 $cols__body: 10 !default;
+
+$max-text-width: 80ch !default;
 
 
 
@@ -139,14 +142,14 @@ $colour__background--menu: change-color($c-cold, $alpha: 0.7) !default;
 
 
 // Text colour
-$color__title: $c-cold !default;
-$color__section-title: $c-warm-black !default;
+$colour__title: $c-cold !default;
+$colour__section-title: $c-warm-black !default;
 
-$color__text--dark: $c-cold-black !default;
-$color__text--bright: $c-warm-white !default;
+$colour__text--dark: $c-cold-black !default;
+$colour__text--bright: $c-warm-white !default;
 
-$color__link--light: $c-dark-grey !default;
-$color__link--dark: $c-light-grey !default;
+$colour__link--light: $c-dark-grey !default;
+$colour__link--dark: $c-light-grey !default;
 
 
 // Image filter colours
@@ -154,13 +157,13 @@ $colour__filter: change-color($c-cold-black, $alpha: 0.6) !default;
 
 
 // Selection colour used for text selection
-$color__selected: $c-warm !default;
+$colour__selected: $c-warm !default;
 
 
 // Borders and shadows colours
-$color__border: $c-cold-white !default;
-$color__shadow--strong: change-color($c-cold-black, $alpha: 0.7) !default;
-$color__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
+$colour__border: $c-cold-white !default;
+$colour__shadow--strong: change-color($c-cold-black, $alpha: 0.7) !default;
+$colour__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
 
 
 
