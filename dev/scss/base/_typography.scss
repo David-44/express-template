@@ -18,3 +18,11 @@ html {
   color: $colour__text--dark;                            // {2}
 
 }
+
+
+
+/* Titles */
+h1, h2, h3, h4 {
+  font-family: $font-family__header;
+  font-weight: 600;
+}

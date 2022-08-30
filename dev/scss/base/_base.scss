@@ -21,7 +21,8 @@
 // What goes on html:
 // - background-colour that have to span the whole width of the viewport
 // - anything that needs to be inherited everywhere (box-sizing, overflow, background-repeat...)
-// - overflow-x to avoid the ugly horizontal bar
+// - overflow-x to avoid the ugly horizontal ba
+// - -webkit-tap-highlight-color avoids flashing when touching a menu on google
 // Note: All typography styles on the html element are in the _typography.scss partial
 
 html {
@@ -30,11 +31,15 @@ html {
   background-repeat: no-repeat;
 
   background-color: $colour__background--light;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
   background-repeat: inherit;
+
+  -webkit-tap-highlight-color: inherit;
+  cursor: inherit;
 }
 
 
@@ -106,7 +111,7 @@ button, input, select, textarea {
 
 
 /* Reset appearance before working with form elements */
-input, select {
+input, select, button {
 	webkit-appearance: none;
 	appearance: none;
 
