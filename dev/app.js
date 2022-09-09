@@ -111,7 +111,17 @@ app.use('/api', limiter);
 
 
 // set security http headers
-app.use(helmet());
+// Note: uses a nonce when using inline scripts, it should be the same as the nonce attribute
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'", "'nonce-24666'", "unsafe-inline"]
+      }
+    }
+  })
+);
 
 
 
