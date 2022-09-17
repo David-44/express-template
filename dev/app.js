@@ -38,7 +38,7 @@ let setCache = function (req, res, next) {
   const period = 60 * 60 * 24 * 365;
 
   if (req.method == 'GET') {
-    res.set('Cache-control', `public, max-age=${period}`);
+    res.set('Cache-control', `public, max-age=${period}, must-revalidate`);
   } else {
     res.set('Cache-control', `no-store`);
   }
