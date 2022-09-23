@@ -27,3 +27,15 @@
 .is-hidden {
   display: none !important;
 }
+
+
+
+/* Making skip-link invisible except for screen readers and keyboard users */
+.skip-link {
+  position: absolute;
+  z-index: -1;
+
+  &:focus {
+    z-index: 100;
+  }
+}
