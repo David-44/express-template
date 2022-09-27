@@ -35,7 +35,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.4.0",
     "express-robots-txt": "^1.0.0",
-    "helmet": "^5.1.0",
+    "helmet": "^6.0.0",
     "hpp": "^0.2.3",
     "mongoose": "^6.3.4",
     "xss-clean": "^0.1.1"
