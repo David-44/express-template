@@ -34,11 +34,11 @@ app.use(express.urlencoded({extended: false}));
 
 
 // Setting up cache for get requests but only for production
+const cachePeriod = 60 * 60;
 let setCache = function (req, res, next) {
-  const period = 60 * 60 * 24 * 365;
 
   if (req.method == 'GET') {
-    res.set('Cache-control', `public, max-age=${period}, must-revalidate`);
+    res.set('Cache-control', `public, max-age=${cachePeriod}, must-revalidate`);
   } else {
     res.set('Cache-control', `no-store`);
   }
@@ -51,7 +51,12 @@ if (process.env.NODE_ENV == "production"){
 
 
 // Serving static assets, CSS and JS scripts + robots file for SEO
-app.use(express.static(__dirname + '/public'));
+var staticOptions = {
+  setHeaders: function (res, path, stat) {
+    res.set('Cache-control', `public, max-age=${cachePeriod}`) // Uses cache control time period
+  }
+}
+app.use(express.static(__dirname + '/public', staticOptions));
 app.use(robots({ UserAgent: '*'}));
 
 
