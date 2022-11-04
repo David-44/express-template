@@ -178,11 +178,17 @@ $colour__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
+  'small': 321px,
+  'medium': 769px,
+  'large': 1025px,
   'huge': 1400px
 ) !default;
+
+
+/// Specific media queries that are used only once or twice in the layout
+$tweakpoints: {
+  'header-breaking': 450px
+}
 
 
 
