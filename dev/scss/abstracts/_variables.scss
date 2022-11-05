@@ -186,9 +186,9 @@ $breakpoints: (
 
 
 /// Specific media queries that are used only once or twice in the layout
-$tweakpoints: {
+$tweakpoints: (
   'header-breaking': 450px
-}
+) !default;
 
 
 
