@@ -27,7 +27,7 @@ $max-text-width: 80ch !default;
 // The idea is that 2 articles + 2 columns gutter should take 100% of free space
 // USAGE: multiply $col-width by either 100% or 100vw
 // $col-width: ($cols__body / 2 - 1) / $cols__body;
-$col-width: round($cols__body / 2 - 1) / $cols__body !default;
+$col-width: math.div(round($cols__body / 2 - 1),$cols__body) !default;
 
 
 
@@ -41,18 +41,18 @@ $col-width: round($cols__body / 2 - 1) / $cols__body !default;
 
 /// @type Number
 $small-mul: 0.6;
-$x-small-mul: round(pow($small-mul, 2) * 100) / 100;
-$xx-small-mul: round(pow($small-mul, 3) * 100) / 100;
-$xxx-small-mul: round(pow($small-mul, 4) * 100) / 100;
+$x-small-mul: math.div(round(pow($small-mul, 2) * 100), 100);
+$xx-small-mul: math.div(round(pow($small-mul, 3) * 100), 100);
+$xxx-small-mul: math.div(round(pow($small-mul, 4) * 100), 100);
 
 
 /// @type Number
-$large-mul: round((1 / $small-mul) * 100) / 100;
-$larger-mul: round(pow($large-mul, 2) * 100) / 100;
-$x-large-mul: round(pow($large-mul, 3) * 100) / 100;
-$xx-large-mul: round(pow($large-mul, 4) * 100) / 100;
-$xxx-large-mul: round(pow($large-mul, 5) * 100) / 100;
-$xxxx-large-mul: round(pow($large-mul, 6) * 100) / 100;
+$large-mul: math.div(round((1 / $small-mul) * 100), 100);
+$larger-mul: math.div(round(pow($large-mul, 2) * 100), 100);
+$x-large-mul: math.div(round(pow($large-mul, 3) * 100), 100);
+$xx-large-mul: math.div(round(pow($large-mul, 4) * 100), 100);
+$xxx-large-mul: math.div(round(pow($large-mul, 5) * 100), 100);
+$xxxx-large-mul: math.div(round(pow($large-mul, 6) * 100), 100);
 
 
 
@@ -102,8 +102,8 @@ $font-size--large: 20px !default;
 
 
 // Flashy colours
-$c-cold: hsl(206, 62, 73) !default; // Turquoise
-$c-warm: hsl(25, 100, 57) !default; // Apricot
+$c-cold: hsl(206, 62%, 73%) !default; // Turquoise
+$c-warm: hsl(25, 100%, 57%) !default; // Apricot
 
 
 
