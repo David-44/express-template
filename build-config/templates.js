@@ -72,5 +72,3 @@ ejsDir.forEach((file) => {
   ejsComp(ejsInputPath, ejsOutputPath, file);
   replaceEJS();
 });
-
-console.log("compiled EJS");

@@ -7,8 +7,8 @@
 
 ## 1) BASICS
 Simple development and production boilerplate for express MVC websites.
-This is tailored to be used with heroku.com for pushing only the content of /dist to the main site.
-All the development is made in /dev and files are copied to dist using gulp
+This is tailored to be used with Digital Ocean for pushing only the content of /dist to the main site.
+All the development is made in /dev and files are copied to dist using npm scripts
 
 The syntax and organisation of the front end follows the BEM and SMACSS conventions
 
