@@ -11,15 +11,20 @@
     "scss": "sass dev/scss/main.scss dev/public/main.css",
     "templates": "node ./build-config/templates.js",
     "jsbundle": "parcel build dev/scripts/index.js --dist-dir ./dev/public",
-    "cpjson": "cp package.json dev/package.json",
 
     "watch:css": "onchange 'dev/scss/**/*.scss' -- npm run scss",
     "watch:ejs": "onchange 'dev/templates/**/*.ejs' -- npm run templates",
     "watch:js": "onchange 'dev/scripts/**/*.js' -- npm run jsbundle",
     "watch:json": "onchange package.json -- cp package.json dev/package.json",
     "watch": "npm-run-all --parallel watch:*",
+
+    "back:root": "cp -t dist/ package.json dev/app.js ",
+    "back:folders": "rsync -a --delete-after dev/controllers dev/models dev/routers dist/",
+    "back": "npm-run-all back:*",
+
     "prod": "node ./dist/app.js",
     "dev": "node ./dev/app.js",
+
     "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init"
   },
   "devDependencies": {
