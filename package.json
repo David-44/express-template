@@ -19,21 +19,29 @@
     "watch": "npm-run-all --parallel watch:*",
 
     "back:root": "cp -t dist/ package.json dev/app.js ",
-    "back:folders": "rsync -a --delete-after dev/controllers dev/models dev/routers dist/",
+    "back:folders": "rsync -a --delete-after dev/controllers dev/models dev/views dev/routers dist/",
     "back": "npm-run-all back:*",
+
+    "front:css": "sass --style=compressed dev/scss/main.scss dist/public/main.css",
+    "front:html": "html-minifier --input-dir dev/public --output-dir dist/public --file-ext html --collapse-boolean-attributes --remove-comments --collapse-whitespace --conservative-collapse --minify-js true --minify-css true",
+    "front:assets": "rsync -a --delete-after dev/public/assets dist/public/",
+    "front:js": "uglifyjs -o dist/public/index.js dev/public/index.js",
+    "front": "npm-run-all front:*",
 
     "prod": "node ./dist/app.js",
     "dev": "node ./dev/app.js",
-
+    
     "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init"
   },
   "devDependencies": {
     "del": "^6.0.0",
+    "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "parcel": "^2.0.0",
     "replace-in-file": "^7.1.0",
-    "sass": "^1.69.7"
+    "sass": "^1.69.7",
+    "uglify-js": "^3.17.4"
   },
   "dependencies": {
     "dotenv": "^16.0.1",
