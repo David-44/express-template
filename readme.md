@@ -38,7 +38,7 @@ Scripts are organised in modules.
 - `$ npm run dev `: runs development site, access with http://localhost:3000
 
 - `$ npm run front`: Copies assets, minifies CSS, js and html and copies everything to dist/public
-- `$ npm run back`: Copies MVC folders to dist, as well as package.json and app
+- `$ npm run back`: Copies MVC folders to dist, as well as package.json and app.js
 
 - `$ npm run watch`: Watches for EJS templates, scripts, sass files  and package.json being modified, then compiles the relevant files
 
@@ -52,7 +52,6 @@ Scripts are organised in modules.
 Everything is in /dev/template/ with 3 subfolders:
 - partials:
 It contains some already made chunks of code that are mostly placeholders.
-The main entry point is the layout file.
 - ejs contains all files that should be compiled as ejs
 When using it, the syntax for everything that should still be used as ejs function
 should use the syntax <~ and ~> instead of <% and %>.
