@@ -8,9 +8,10 @@
 ## 1) BASICS
 Simple development and production boilerplate for express MVC websites.
 This is tailored to be used with Digital Ocean for pushing only the content of /dist to the main site.
-All the development is made in /dev and files are copied to dist using npm scripts
+All the development is made in /dev and files are copied to dist using npm scripts.
 
-The syntax and organisation of the front end follows the BEM and SMACSS conventions
+The syntax and organisation of the front end follows the BEM and SMACSS conventions.
+Scripts are organised in modules.
 
 
 
@@ -21,7 +22,7 @@ The syntax and organisation of the front end follows the BEM and SMACSS conventi
 1. Add a title, author and description to package.json
 2. `$ npm run first`
 - It deletes the current .git repo and .gitignore
-- It creates a git repo for the dev environment and for the live one.
+- It creates a git repo for the dev environment and for the live one
 - It installs necessary node modules at the root
 3. Add .env to both dev/.gitignore and dist/.gitignore before any modification to .env
 
@@ -31,17 +32,15 @@ The syntax and organisation of the front end follows the BEM and SMACSS conventi
 
 ## 3) INTERFACE:
 
-- `$ npm run first`: initialising (see above).
-- `$ npm run watch`: runs sass watch.
+- `$ npm run first`: initialising (see above)
+- `$ npm run watch`: watches for changes to scss, templates ans scripts and compiles accordingly (see each section for details). Also watches for change in the main package.json
 - `$ npm run prod `: runs production site, access with http://localhost:4000
 - `$ npm run dev `: runs development site, access with http://localhost:3000
 
-- `$ gulp clean `: Cleans the public production folder.
-- `$ gulp deployFront`: Copies assets, minifies CSS, js and html copies ejs templates and html to the views folder
-- `$ gulp deployBack`: Copiews MVC folders to dist, as well as package.json and app
+- `$ npm run front`: Copies assets, minifies CSS, js and html and copies everything to dist/public
+- `$ npm run back`: Copies MVC folders to dist, as well as package.json and app
 
-- `$ gulp sass`: same as npm run watch
-- `$ gulp watchDev`: Watches for EJS templates, scripts and sass files being modified
+- `$ npm run watch`: Watches for EJS templates, scripts, sass files  and package.json being modified, then compiles the relevant files
 
 
 
@@ -53,20 +52,23 @@ The syntax and organisation of the front end follows the BEM and SMACSS conventi
 Everything is in /dev/template/ with 3 subfolders:
 - partials:
 It contains some already made chunks of code that are mostly placeholders.
-The main entry point is the layout file
-
+The main entry point is the layout file.
 - ejs contains all files that should be compiled as ejs
 When using it, the syntax for everything that should still be used as ejs function
-should use the syntax <~ and ~> instead of <% and %>
+should use the syntax <~ and ~> instead of <% and %>.
+- html, all the files that should be compiled as html go there.
 
-- html, all the files that should be compiled as html go there
+- The html only files are minified and copied to dist with the frontend
+while the ejs files are copied as such with the backend.
+
+- All the work happens in a config file: build-config/templates.js
+
+- To compile once (without watching): `npm run templates`.
 
 
 
 ### Sass
-Needs node-watch (installed when initialising).
-
-Runs with `npm run watch`.
+Uses dart-sass
 
 - The folder organisation is heavily based on [Sass Guidelines](http://sass-guidelin.es/).
 - The content of the _variables file is set to default value so that the watch command will work right away. These values are not here to match anything, they're just placeholders.
@@ -75,12 +77,15 @@ Runs with `npm run watch`.
 - /base/typography and layout/container contain rules that I find useful but are opinionated.
 - All other files are empty.
 
+- To compile once (without watching): `npm run scss`.
 
 
-### A gulp file
-Uses the command `gulp deploy` to:
-- copy the content of /assets to /dist/public/assets/ and keep the folder structure.
-- minify index.html, main.css and scripts.js and copy them to /dist/public.
+
+### Scripts
+Uses the bundler [Parcel](https://www.npmjs.com/package/parcel/v/2.11.0) to compile all scripts into one file.
+
+- Entry point is index.js
+- To compile once (without watching): `npm run jsbundle`.
 
 
 
@@ -90,12 +95,11 @@ Runs with `npm run prod` or `npm run dev`.
 Uses the following folders:
 - models
 - controllers
-- views (with a mix of ejs and html files)
+- views (containing only ejs files)
 - routers
-If more files or folders are added, gulpfile.js should be modified to deal with them
-At the moment, the models and controllers are empty, might be filled at a later date
+If more files or folders are added, the package.json scripts should be modified accordingly.
 
 
 
 ### Other files
-- procfile, used only by heroku and only in dist folder
+- procfile, used only by Digital Ocean and only in dist folder.
