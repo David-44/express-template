@@ -18,7 +18,7 @@
     "watch:json": "onchange package.json -- cp package.json dev/package.json",
     "watch": "npm-run-all --parallel watch:*",
 
-    "back:root": "cp -t dist/ package.json dev/app.js ",
+    "back:root": "cp -t dist/ package.json package-lock.json dev/app.js ",
     "back:folders": "rsync -a --delete-after dev/controllers dev/models dev/views dev/routers dist/",
     "back": "npm-run-all back:*",
 
@@ -30,7 +30,7 @@
 
     "prod": "node ./dist/app.js",
     "dev": "node ./dev/app.js",
-    
+
     "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init"
   },
   "devDependencies": {
