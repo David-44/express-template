@@ -6,7 +6,7 @@ const path = require('path');
 const robots = require('express-robots-txt');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-const xss = require('xss-clean');
+const xss = require('express-xss-sanitizer');
 const hpp = require('hpp');
 const mongoSanitize = require('express-mongo-sanitize');
 
