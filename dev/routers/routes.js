@@ -12,13 +12,15 @@ var router = express.Router();
 
 /********************************* GET ROUTES *********************************/
 
+// Remove the examples before running the server as they will crash
+
 // Example route with ejs render
 router.get(['/', '/index'], async (req, res) => res.render('index', {blogs: await blog.blogRender()}));
 
 
 
 // example route with static file
-router.get('/about', (req, res) => res.sendFile(path.join(__dirname + '/../views/about.html')));
+router.get('/about', (req, res) => res.sendFile(path.join(__dirname + '/../public/about.html')));
 
 
 

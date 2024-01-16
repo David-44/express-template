@@ -71,25 +71,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 /************************************ DB INIT *********************************/
 
-// Used to setup the auto reconnect to fire every 5 minutes
-// useNewUrlParser is a required option
-const mongooseOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-};
-
-
-
 // establishes connection, takes URI directly from process.env
-mongoose.connect(process.env.DB_CONNECT, mongooseOptions, err => {
-  if (err) {
-    console.error('Unable to connect to DB server. Please start the server. Error:', err);
-  } else {
-    // initialises all user schemas
-    console.log("connected to DB");
-  }
-});
-
+mongoose.connect(process.env.DB_CONNECT);
 const db = mongoose.connection;
 
 // disconnects on error in order to force an auto reconnect
