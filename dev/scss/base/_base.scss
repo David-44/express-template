@@ -23,6 +23,7 @@
 // - anything that needs to be inherited everywhere (box-sizing, overflow, background-repeat...)
 // - overflow-x to avoid the ugly horizontal ba
 // - -webkit-tap-highlight-color avoids flashing when touching a menu on google
+// - scroll-behavior avoids jittery animations
 // Note: All typography styles on the html element are in the _typography.scss partial
 
 html {
@@ -32,6 +33,8 @@ html {
 
   background-color: $colour__background--light;
   -webkit-tap-highlight-color: transparent;
+
+  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
