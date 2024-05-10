@@ -118,7 +118,7 @@ app.use(xss());
 
 
 
-// Protects against parameteer pollution attack
+// Protects against parameter pollution attack
 app.use(hpp());
 
 

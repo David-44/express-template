@@ -1,6 +1,6 @@
 
 # TEMPLATE FOR WEBSITES USING EXPRESS AND EJS
-
+Instructions followed (basics): https://deliciousbrains.com/npm-build-script/
 
 
 
