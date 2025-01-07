@@ -6,7 +6,7 @@ const path = require('path');
 const robots = require('express-robots-txt');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
-const xss = require('express-xss-sanitizer');
+const {xss} = require('express-xss-sanitizer');
 const hpp = require('hpp');
 const mongoSanitize = require('express-mongo-sanitize');
 
@@ -101,13 +101,11 @@ app.use('/api', limiter);
 // set security http headers
 // Note: uses a nonce when using inline scripts, it should be the same as the nonce attribute
 app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "'nonce-24666'", "unsafe-inline"]
-      }
-    }
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'nonce-24666'", "'unsafe-inline'"]
+    },
   })
 );
 

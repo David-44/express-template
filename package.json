@@ -2,7 +2,7 @@
   "name": "NAMEIT",
   "version": "1.0.0",
   "description": "DESCRIBE IT",
-  "author": "AUTHOR NAME",
+  "author": "ENTER NAME",
   "license": "ISC",
   "engines": {
     "node": "22.x"
@@ -11,6 +11,7 @@
     "scss": "sass dev/scss/main.scss dev/public/main.css",
     "templates": "node ./build-config/templates.js",
     "jsbundle": "rm -f ./dev/public/index.js && parcel build dev/scripts/index.js --dist-dir ./dev/public",
+    "clean": "rm -r dist/public/*",
 
     "watch:css": "onchange dev/scss/**/*.scss -- npm run scss",
     "watch:ejs": "onchange dev/templates/**/*.ejs -- npm run templates",
@@ -19,12 +20,12 @@
     "watch": "npm-run-all --parallel watch:*",
 
     "back:root": "cp -t dist/ package.json package-lock.json dev/app.js ",
-    "back:folders": "rsync -a --delete-after dev/controllers dev/models dev/views dev/routers dist/",
+    "back:folders": "cp -R dev/controllers dev/models dev/views dev/routers dist/",
     "back": "npm-run-all back:*",
 
     "front:css": "sass --style=compressed dev/scss/main.scss dist/public/main.css",
     "front:html": "html-minifier --input-dir dev/public --output-dir dist/public --file-ext html --collapse-boolean-attributes --remove-comments --collapse-whitespace --conservative-collapse --minify-js true --minify-css true",
-    "front:assets": "rsync -a --delete-after dev/public/assets dist/public/",
+    "front:assets": "cp -R -u -p dev/public/assets dist/public/",
     "front:js": "uglifyjs -o dist/public/index.js dev/public/index.js",
     "front": "npm-run-all front:*",
 
