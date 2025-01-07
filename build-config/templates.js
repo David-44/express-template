@@ -2,7 +2,7 @@
 const ejs  = require("ejs"),
       fs   = require("fs"),
       {execSync} = require("node:child_process"),
-      replace = require("replace-in-file");
+      {replaceInFileSync} = require("replace-in-file");
 
 
 
@@ -46,7 +46,7 @@ const replaceOptions = {
 
 const replaceEJS = function (){
   try {
-    const results = replace.sync(replaceOptions);
+    const results = replaceInFileSync(replaceOptions);
   }
   catch (error) {
     console.error('Error occurred:', error);

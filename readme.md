@@ -24,7 +24,6 @@ Scripts are organised in modules.
 - It deletes the current .git repo and .gitignore
 - It creates a git repo for the dev environment and for the live one
 - It installs necessary node modules at the root
-3. Add .env to both dev/.gitignore and dist/.gitignore before any modification to .env
 
 
 
@@ -39,8 +38,6 @@ Scripts are organised in modules.
 
 - `$ npm run front`: Copies assets, minifies CSS, js and html and copies everything to dist/public
 - `$ npm run back`: Copies MVC folders to dist, as well as package.json and app.js
-
-- `$ npm run watch`: Watches for EJS templates, scripts, sass files  and package.json being modified, then compiles the relevant files
 
 
 

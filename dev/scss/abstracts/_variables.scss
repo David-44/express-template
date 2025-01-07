@@ -6,6 +6,14 @@
 
 
 
+@use 'sass:math';
+@use 'sass:color';
+@use 'functions' as f;
+
+
+
+
+
 /// BODY'S DIMENSIONS
 /// -----------------
 
@@ -108,15 +116,15 @@ $c-warm: hsl(25, 100%, 57%) !default; // Apricot
 
 
 // White, black and grey
-$c-cold-white:   tint($c-cold, 90%)  !default;
-$c-warm-white:   tint($c-warm, 90%)  !default;
+$c-cold-white:   f.tint($c-cold, 90%)  !default;
+$c-warm-white:   f.tint($c-warm, 90%)  !default;
 
-$c-cold-black:   shade($c-cold, 90%) !default;
-$c-warm-black:   shade($c-warm, 90%) !default;
+$c-cold-black:   f.shade($c-cold, 90%) !default;
+$c-warm-black:   f.shade($c-warm, 90%) !default;
 
-$c-grey:   desaturate($c-cold, 100%) !default;
-$c-light-grey:   tint($c-grey, 90%)  !default;
-$c-dark-grey:    shade($c-grey, 90%) !default;
+$c-grey:   color.adjust($c-cold, $saturation: -100%) !default;
+$c-light-grey:   f.tint($c-grey, 90%)  !default;
+$c-dark-grey:    f.shade($c-grey, 90%) !default;
 
 
 
@@ -136,8 +144,8 @@ $c-dark-grey:    shade($c-grey, 90%) !default;
 // Background colours
 $colour__background--light: $c-cold-white !default;
 $colour__background--dark: $c-warm-black !default;
-$colour__background--nav: change-color($c-cold, $alpha: 0.4) !default;
-$colour__background--menu: change-color($c-cold, $alpha: 0.7) !default;
+$colour__background--nav: color.adjust($c-cold, $alpha: 0.4) !default;
+$colour__background--menu: color.adjust($c-cold, $alpha: 0.7) !default;
 
 
 
@@ -153,7 +161,7 @@ $colour__link--dark: $c-light-grey !default;
 
 
 // Image filter colours
-$colour__filter: change-color($c-cold-black, $alpha: 0.6) !default;
+$colour__filter: color.adjust($c-cold-black, $alpha: 0.6) !default;
 
 
 // Selection colour used for text selection
@@ -162,8 +170,8 @@ $colour__selected: $c-warm !default;
 
 // Borders and shadows colours
 $colour__border: $c-cold-white !default;
-$colour__shadow--strong: change-color($c-cold-black, $alpha: 0.7) !default;
-$colour__shadow--light: change-color($c-cold-black, $alpha: 0.3) !default;
+$colour__shadow--strong: color.adjust($c-cold-black, $alpha: 0.7) !default;
+$colour__shadow--light: color.adjust($c-cold-black, $alpha: 0.3) !default;
 
 
 

@@ -2,6 +2,8 @@
 // This file contains CSS helper classes.
 // -----------------------------------------------------------------------------
 
+@use '../abstracts' as *;
+
 
 /*
  * HIDING FROM SCREEN BUT NOT SCREEN READERS: .visually-hidden

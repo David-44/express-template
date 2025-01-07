@@ -2,19 +2,19 @@
   "name": "NAMEIT",
   "version": "1.0.0",
   "description": "DESCRIBE IT",
-  "author": "NAME IT",
+  "author": "AUTHOR NAME",
   "license": "ISC",
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "scss": "sass dev/scss/main.scss dev/public/main.css",
     "templates": "node ./build-config/templates.js",
-    "jsbundle": "parcel build dev/scripts/index.js --dist-dir ./dev/public",
+    "jsbundle": "rm -f ./dev/public/index.js && parcel build dev/scripts/index.js --dist-dir ./dev/public",
 
-    "watch:css": "onchange 'dev/scss/**/*.scss' -- npm run scss",
-    "watch:ejs": "onchange 'dev/templates/**/*.ejs' -- npm run templates",
-    "watch:js": "onchange 'dev/scripts/**/*.js' -- npm run jsbundle",
+    "watch:css": "onchange dev/scss/**/*.scss -- npm run scss",
+    "watch:ejs": "onchange dev/templates/**/*.ejs -- npm run templates",
+    "watch:js": "onchange dev/scripts/**/*.js -- npm run jsbundle",
     "watch:json": "onchange package.json -- cp package.json dev/package.json",
     "watch": "npm-run-all --parallel watch:*",
 
@@ -31,27 +31,27 @@
     "prod": "node ./dist/app.js",
     "dev": "node ./dev/app.js",
 
-    "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init"
+    "first": "rm -rf .git && rm .gitignore && npm install && cd dev && git init && cd ../dist && git init && cp package.json dev/package.json"
   },
   "devDependencies": {
     "html-minifier": "^4.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "parcel": "^2.0.0",
-    "replace-in-file": "^7.1.0",
-    "sass": "^1.69.7",
-    "uglify-js": "^3.17.4"
+    "parcel": "^2.13.3",
+    "replace-in-file": "^8.3.0",
+    "sass": "^1.83.1",
+    "uglify-js": "^3.19.3"
   },
   "dependencies": {
-    "dotenv": "^16.3.1",
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
     "express-mongo-sanitize": "^2.2.0",
-    "express-rate-limit": "^7.1.5",
+    "express-rate-limit": "^7.5.0",
     "express-robots-txt": "^1.0.0",
-    "helmet": "^7.1.0",
+    "helmet": "^8.0.0",
     "hpp": "^0.2.3",
-    "mongoose": "^8.0.4",
-    "express-xss-sanitizer": "^1.1.8"
+    "mongoose": "^8.9.3",
+    "express-xss-sanitizer": "^2.0.0"
   }
 }

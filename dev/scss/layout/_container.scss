@@ -2,6 +2,7 @@
 // This file contains styles related to the container and grid of the site/application.
 // -----------------------------------------------------------------------------
 
+@use '../abstracts' as *;
 
 /* Setting up the main content container: body element */
 // {1} The container should be at least as high as the viewport

@@ -6,6 +6,13 @@
 
 
 
+@use 'sass:math';
+@use 'sass:color';
+
+
+
+
+
 // TABLE OF CONTENTS
 // -----------------------------------------------------------------------------
 
@@ -30,7 +37,7 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+  @return color.mix(white, $color, $percentage);
 }
 
 
@@ -41,7 +48,7 @@
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  @return color.mix(black, $color, $percentage);
 }
 
 

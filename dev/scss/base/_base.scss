@@ -2,6 +2,8 @@
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
 
+@use '../abstracts' as *;
+
 // contains base styles in this order:
 // - html
 // - margins removal
@@ -24,14 +26,15 @@
 // - overflow-x to avoid the ugly horizontal ba
 // - -webkit-tap-highlight-color avoids flashing when touching a menu on google
 // - scroll-behavior avoids jittery animations
-// Note: All typography styles on the html element are in the _typography.scss partial
+// Note: All typography styles on the html element are in the _typography partial
+
 
 html {
   box-sizing: border-box;
   overflow-x: hidden;
   background-repeat: no-repeat;
 
-  background-color: $colour__background--light;
+  background-color: grey;
   -webkit-tap-highlight-color: transparent;
 
   scroll-behavior: smooth;

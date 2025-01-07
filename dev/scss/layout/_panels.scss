@@ -2,6 +2,9 @@
 // This file contains all styles related to the panels coming inside the body
 // -----------------------------------------------------------------------------
 
+@use '../abstracts' as *;
+
+
 /**
   * Here go all the positioning of panels together, including:
   * - margins, paddings and borders
